@@ -1,0 +1,42 @@
+name: Deploy Staging Link
+on:
+  pull_request:
+    types: ['opened', 'synchronize', 'closed']
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      ## Git setup
+      - name: Checkout Branch
+        uses: actions/checkout@v2
+        with:
+          path: .
+      - name: Check AWS Installation
+        run: which aws
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+          path: .
+      - name: Install NPM dependencies
+        run: npm install
+      - name: Run NPM package
+        run: npm test
+      - name: Deploy Staging
+        if: github.event == 'opened'
+        run: echo 'deploying to staging...'
+      - name: Update Staging
+        if: github.event == 'synchronize'
+        run: echo 'Updating staging...'
+      - name: Delete Staging
+        if: github.event == 'closed'
+        run: echo $GITHUB_REF
+  # deploy-staging:
+  #   if: github.event == 'opened'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout Branch
+  #       uses: actions/checkout@v2
+  #       with:
+  #         path: .
+  #     - name: 
