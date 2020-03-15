@@ -1,0 +1,23 @@
+{
+  "name": "ci-comparison",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicovigil1/ci-comparison.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicovigil1/ci-comparison/issues"
+  },
+  "homepage": "https://github.com/nicovigil1/ci-comparison#readme",
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}
