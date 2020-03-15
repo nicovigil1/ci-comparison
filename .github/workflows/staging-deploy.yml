@@ -12,7 +12,7 @@ jobs:
         with:
           path: .
       - name: Check AWS Installation
-        run: which aws
+        run: aws --version
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
@@ -22,14 +22,15 @@ jobs:
         run: npm install
       - name: Run NPM package
         run: npm test
+      - run: echo ${{github.event.action}}
       - name: Deploy Staging
-        if: github.event == 'opened'
+        if: github.event.action == 'opened'
         run: echo 'deploying to staging...'
       - name: Update Staging
-        if: github.event == 'synchronize'
+        if: github.event.action == 'synchronize'
         run: echo 'Updating staging...'
       - name: Delete Staging
-        if: github.event == 'closed'
+        if: github.event.action == 'closed'
         run: echo $GITHUB_REF
   # deploy-staging:
   #   if: github.event == 'opened'
