@@ -6,12 +6,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      ## Git setup
       - name: Checkout Branch
         uses: actions/checkout@v2
         with:
           path: .
-      - name: Check AWS Installation
+      - name: Check AWS Installation # automatically installed on github hosted images
         run: aws --version
       - name: Setup Node
         uses: actions/setup-node@v1
