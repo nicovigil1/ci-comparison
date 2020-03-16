@@ -5,6 +5,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: nicovigil1/node-12.13.0-stretch-browsers-aws-cli:0.0.1
     steps:
       - name: Checkout Branch
         uses: actions/checkout@v2
