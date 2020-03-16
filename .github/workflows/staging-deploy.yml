@@ -9,8 +9,6 @@ jobs:
     steps:
       - name: Checkout Branch
         uses: actions/checkout@v2
-        with:
-          path: .
       - name: Check AWS Installation # automatically installed on github hosted images
         run: aws --version
       - name: Setup Node
