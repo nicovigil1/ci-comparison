@@ -7,25 +7,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      ## Barker dev tools setup
+      ## setup
       - name: Checkout Branch
         uses: actions/checkout@v2
         with:
           path: .
       - name: Check AWS Installation
-        run: which aws
+        run: aws --version
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: '10.x'
-          path: barker-dev-tools
-      - name: Install Barker Dev Tool Dependencies
-        run: npm --prefix ./barker-dev-tools install
+      - name: Install Dependencies
+        run: npm install
 
       ## Deploy to Production
       - name: Deploy to Production
-        run: barker-dev-tools promote
+        run: echo 'deploying to production...'
         env:
-          GITHUB_PAT: ${{ secrets.PRIVATE_REPO_TOKEN }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

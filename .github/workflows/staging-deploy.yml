@@ -31,12 +31,3 @@ jobs:
       - name: Delete Staging
         if: github.event.action == 'closed'
         run: echo $GITHUB_REF
-  # deploy-staging:
-  #   if: github.event == 'opened'
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout Branch
-  #       uses: actions/checkout@v2
-  #       with:
-  #         path: .
-  #     - name: 
