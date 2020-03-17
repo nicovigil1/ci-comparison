@@ -8,3 +8,5 @@ before_install:
   - docker ps -a
   - docker run nicovigil1/node-12.13.0-stretch-browsers-aws-cli:0.0.1 env
   - docker run nicovigil1/node-12.13.0-stretch-browsers-aws-cli:0.0.1 aws --version
+script:
+  - echo "hello world"

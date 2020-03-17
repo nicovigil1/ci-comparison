@@ -11,6 +11,8 @@ jobs:
         run: env
       - name: Check AWS Installation # automatically installed on github hosted images
         run: aws --version
+      - name: echo hello world
+        run: echo "hello world"
       # - name: Setup Node
       #   uses: actions/setup-node@v1
       #   with:
