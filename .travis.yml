@@ -9,3 +9,4 @@ before_install:
 
 script:
   - echo "hello world"
+  - aws --version
