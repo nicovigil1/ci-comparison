@@ -5,29 +5,30 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: nicovigil1/node-12.13.0-stretch-browsers-aws-cli:0.0.1
     steps:
-      - name: Checkout Branch
-        uses: actions/checkout@v2
-        with:
-          path: .
+      - name: Checkout ENV
+        run: env
       - name: Check AWS Installation # automatically installed on github hosted images
         run: aws --version
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '10.x'
-          path: .
-      - name: Install NPM dependencies
-        run: npm install
-      - name: Run NPM package
-        run: npm test
-      - run: echo ${{github.event.action}}
-      - name: Deploy Staging
-        if: github.event.action == 'opened'
-        run: echo 'deploying to staging...'
-      - name: Update Staging
-        if: github.event.action == 'synchronize'
-        run: echo 'Updating staging...'
-      - name: Delete Staging
-        if: github.event.action == 'closed'
-        run: echo $GITHUB_REF
+      - name: echo hello world
+        run: echo "hello world"
+      # - name: Setup Node
+      #   uses: actions/setup-node@v1
+      #   with:
+      #     node-version: '10.x'
+      #     path: .
+      # - name: Install NPM dependencies
+      #   run: npm install
+      # - name: Run NPM package
+      #   run: npm test
+      # - run: echo ${{github.event.action}}
+      # - name: Deploy Staging
+      #   if: github.event.action == 'opened'
+      #   run: echo 'deploying to staging...'
+      # - name: Update Staging
+      #   if: github.event.action == 'synchronize'
+      #   run: echo 'Updating staging...'
+      # - name: Delete Staging
+      #   if: github.event.action == 'closed'
+      #   run: echo $GITHUB_REF

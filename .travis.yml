@@ -1,0 +1,12 @@
+language: node_js
+
+services: docker
+
+before_install:
+  - docker pull nicovigil1/node-12.13.0-stretch-browsers-aws-cli:0.0.1
+  - docker run -d -p 127.0.0.1:80:4567 nicovigil1/node-12.13.0-stretch-browsers-aws-cli:0.0.1
+  - docker ps -a
+  - docker run nicovigil1/node-12.13.0-stretch-browsers-aws-cli:0.0.1 env
+  - docker run nicovigil1/node-12.13.0-stretch-browsers-aws-cli:0.0.1 aws --version
+script:
+  - echo "hello world"
